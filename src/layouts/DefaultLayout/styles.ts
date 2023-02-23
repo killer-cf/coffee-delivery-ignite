@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
 export const LayoutContainer = styled.div`
-  padding: 3rem;
+  padding: 0 10rem;
 `
