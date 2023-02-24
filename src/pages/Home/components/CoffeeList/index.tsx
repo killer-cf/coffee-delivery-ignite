@@ -4,8 +4,9 @@ import { CoffeeListContainer, ListContainer } from './styles'
 export function CoffeeList() {
   return (
     <CoffeeListContainer>
-      <h1>Nossos cafés</h1>
       <ListContainer>
+        <h1>Nossos cafés</h1>
+
         <CoffeeItem />
         <CoffeeItem />
         <CoffeeItem />

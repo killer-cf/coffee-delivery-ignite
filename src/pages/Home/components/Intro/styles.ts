@@ -5,13 +5,21 @@ export const IntroContainer = styled.div`
   align-items: flex-start;
   padding: 5.75rem 0;
   gap: 4.66rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const IntroInfoContainer = styled.div`
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 4.125rem;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const TitleContainer = styled.div`
@@ -74,4 +82,14 @@ export const BenefitItem = styled.div<BackColorProps>`
   background: ${(props) => props.theme[BackColor[props.backColor]]};
 `
 
-export const IntroImgContainer = styled.div``
+export const IntroImgContainer = styled.div`
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+  }
+`
