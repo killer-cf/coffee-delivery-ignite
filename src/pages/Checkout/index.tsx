@@ -1,6 +1,7 @@
 import { Address } from './components/Address'
+import { Cart } from './components/Cart'
 import { Payment } from './components/Payment'
-import { CartCard, CheckoutForm } from './styles'
+import { CheckoutForm } from './styles'
 
 export function Checkout() {
   return (
@@ -12,7 +13,7 @@ export function Checkout() {
       </div>
       <div className="box-2">
         <h3>Cafés selecionados</h3>
-        <CartCard></CartCard>
+        <Cart />
       </div>
     </CheckoutForm>
   )

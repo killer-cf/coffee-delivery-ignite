@@ -26,5 +26,3 @@ export const CheckoutForm = styled.form`
     }
   }
 `
-
-export const CartCard = styled.div``
