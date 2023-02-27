@@ -60,6 +60,10 @@ export const BaseTitle = styled.div`
     font-weight: 400;
     line-height: 1.3;
   }
+
+  div {
+    flex: 1;
+  }
 `
 
 export const AddressCardTitle = styled(BaseTitle)`
