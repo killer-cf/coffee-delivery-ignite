@@ -4,6 +4,7 @@ export const CheckoutForm = styled.form`
   display: flex;
   justify-content: flex-start;
   gap: 2rem;
+  flex-wrap: wrap;
 
   h3 {
     font-family: 'Baloo 2', cursive;
@@ -14,8 +15,11 @@ export const CheckoutForm = styled.form`
   }
 
   .box-1 {
-    max-width: 40rem;
-    width: 60%;
+    flex: 1;
+  }
+
+  .box-2 {
+    min-width: 23.875rem;
   }
 
   @media screen and (max-width: 768px) {

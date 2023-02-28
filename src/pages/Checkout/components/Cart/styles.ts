@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const CartCard = styled.div`
-  width: 28rem;
+  width: 100%;
   margin-top: 0.9375rem;
   padding: 2.5rem;
   display: flex;
@@ -9,7 +9,7 @@ export const CartCard = styled.div`
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px;
 
-  button {
+  button[type='submit'] {
     margin-top: 1.5rem;
     width: 100%;
     height: 2.875rem;
@@ -28,8 +28,11 @@ export const CartCard = styled.div`
       background-color: ${(props) => props.theme['yellow-dark']};
     }
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 1.5rem;
+  }
 `
-export const Item = styled.div``
 
 export const TotalBox = styled.div`
   display: flex;

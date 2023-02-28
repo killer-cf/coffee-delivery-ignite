@@ -90,6 +90,10 @@ export const CepInput = styled(BaseInput)`
   width: 12.5rem;
   margin-bottom: 1rem;
 
+  @media screen and (max-width: 1060px) {
+    width: 50%;
+  }
+
   @media screen and (max-width: 768px) {
     width: 30%;
   }
@@ -105,6 +109,10 @@ export const NumbertInput = styled(BaseInput)`
   width: 12.5rem;
   margin-right: 0.75rem;
   margin-bottom: 1rem;
+
+  @media screen and (max-width: 1060px) {
+    width: 50%;
+  }
 
   @media screen and (max-width: 768px) {
     width: 30%;
@@ -138,6 +146,10 @@ export const DistrictInput = styled(BaseInput)`
   width: 12.5rem;
   margin-bottom: 1rem;
 
+  @media screen and (max-width: 1060px) {
+    width: 50%;
+  }
+
   @media screen and (max-width: 768px) {
     width: 30%;
   }
@@ -152,6 +164,7 @@ export const CityInput = styled(BaseInput)`
   }
 `
 export const UfInput = styled(BaseInput)`
-  width: 3.75rem;
+  max-width: 3.75rem;
   margin-bottom: 1rem;
+  flex: 1;
 `

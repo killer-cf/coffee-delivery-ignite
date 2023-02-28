@@ -1,10 +1,12 @@
-import { CartCard, Item, TotalBox } from './styles'
+import { Item } from '../Item'
+import { CartCard, TotalBox } from './styles'
 
 export function Cart() {
   return (
     <CartCard>
       <div>
-        <Item></Item>
+        <Item />
+        <Item />
       </div>
       <TotalBox>
         <div>
