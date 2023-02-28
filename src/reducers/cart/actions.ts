@@ -8,6 +8,6 @@ export enum ActionTypes {
 export function addNewItemAction(newItem: Item) {
   return {
     type: ActionTypes.ADD_NEW_ITEM,
-    payload: newItem,
+    payload: { newItem },
   }
 }

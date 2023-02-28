@@ -7,39 +7,66 @@ import {
   Footer,
   Price,
 } from './styles'
-import CoffeeTraditionalExpress from '../../../../assets/coffee-traditional-express.svg'
 import { ShoppingCart } from 'phosphor-react'
+import { Coffee } from '../CoffeeList'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../../contexts/CartContext'
 
-export function CoffeeItem() {
+interface CoffeeItemProps {
+  coffeData: Coffee
+}
+
+export function CoffeeItem({ coffeData }: CoffeeItemProps) {
+  const { createNewItem } = useContext(CartContext)
+  const [itemQuantity, setItemQuantity] = useState(1)
+  const { src, desc, name, value } = coffeData
+
+  function handleAddItemToCart() {
+    const item = {
+      name,
+      src,
+      value,
+      quantity: itemQuantity,
+    }
+
+    createNewItem(item)
+  }
+
   return (
     <CoffeeItemContainer>
-      <img src={CoffeeTraditionalExpress} alt="" />
+      <img src={src} alt="" />
       <FlagsContainer>
         <div>
           <h3>TRADICIONAL</h3>
         </div>
       </FlagsContainer>
       <CoffeeInfo>
-        <h2>Expresso Tradicional</h2>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <h2>{name}</h2>
+        <p>{desc}</p>
       </CoffeeInfo>
       <Footer>
         <Price>
           <p>
-            R$<span>9,90</span>
+            R$<span>{value}</span>
           </p>
         </Price>
         <CartActions>
           <div>
-            <button type="button">
+            <button
+              onClick={() => setItemQuantity(itemQuantity - 1)}
+              type="button"
+            >
               <span>-</span>
             </button>
-            <p>1</p>
-            <button type="button">
+            <p>{itemQuantity}</p>
+            <button
+              onClick={() => setItemQuantity(itemQuantity + 1)}
+              type="button"
+            >
               <span>+</span>
             </button>
           </div>
-          <ButtonAddToCart type="button">
+          <ButtonAddToCart onClick={handleAddItemToCart} type="button">
             <ShoppingCart weight="fill" size={22} />
           </ButtonAddToCart>
         </CartActions>

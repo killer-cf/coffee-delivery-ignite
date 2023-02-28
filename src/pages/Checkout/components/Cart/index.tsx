@@ -1,12 +1,17 @@
-import { Item } from '../Item'
+import { useContext } from 'react'
+import { CartContext } from '../../../../contexts/CartContext'
+import { CartItem } from '../Item'
 import { CartCard, TotalBox } from './styles'
 
 export function Cart() {
+  const { itens } = useContext(CartContext)
+
   return (
     <CartCard>
       <div>
-        <Item />
-        <Item />
+        {itens.map((item) => (
+          <CartItem key={item.id} itemData={item} />
+        ))}
       </div>
       <TotalBox>
         <div>

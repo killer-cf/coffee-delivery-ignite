@@ -5,6 +5,8 @@ import { cartReducer, Item } from '../reducers/cart/reducer'
 interface CreateItemData {
   name: string
   quantity: number
+  src: string
+  value: string
 }
 
 interface CartContextType {

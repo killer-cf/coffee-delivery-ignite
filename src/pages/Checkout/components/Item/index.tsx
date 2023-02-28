@@ -6,21 +6,25 @@ import {
   ItemInfoAndActions,
   PriceItemQuant,
 } from './styles'
-import TraditionalExpress from '../../../../assets/express.svg'
+import { Item } from '../../../../reducers/cart/reducer'
 
-export function Item() {
+interface ItemProps {
+  itemData: Item
+}
+
+export function CartItem({ itemData }: ItemProps) {
   return (
     <ItemContainer>
       <ItemInfoAndActions>
-        <img src={TraditionalExpress} alt="" />
+        <img src={itemData.src} alt="" />
         <div className="title">
-          <h2>Expresso Tradicional</h2>
+          <h2>{itemData.name}</h2>
           <CartActions>
             <div>
               <button type="button">
                 <span>-</span>
               </button>
-              <p>1</p>
+              <p>{itemData.quantity}</p>
               <button type="button">
                 <span>+</span>
               </button>
@@ -33,7 +37,7 @@ export function Item() {
         </div>
       </ItemInfoAndActions>
       <PriceItemQuant>
-        <h5>R$ 9,90</h5>
+        <h5>R$ {itemData.value}</h5>
       </PriceItemQuant>
     </ItemContainer>
   )
