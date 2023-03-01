@@ -15,7 +15,8 @@ interface ItemProps {
 }
 
 export function CartItem({ itemData }: ItemProps) {
-  const { decItemQuantity, sumItemQuantity } = useContext(CartContext)
+  const { decItemQuantity, sumItemQuantity, removeItem } =
+    useContext(CartContext)
 
   function handleDecItemQuantity() {
     decItemQuantity(itemData.name)
@@ -23,6 +24,10 @@ export function CartItem({ itemData }: ItemProps) {
 
   function handleSumItemQuantity() {
     sumItemQuantity(itemData.name)
+  }
+
+  function handleRemoveItem() {
+    removeItem(itemData.name)
   }
 
   return (
@@ -41,7 +46,7 @@ export function CartItem({ itemData }: ItemProps) {
                 <span>+</span>
               </button>
             </div>
-            <BottonRemove type="button">
+            <BottonRemove onClick={handleRemoveItem} type="button">
               <Trash size={16} />
               REMOVER
             </BottonRemove>

@@ -3,6 +3,7 @@ import { Item } from './reducer'
 /* eslint-disable no-unused-vars */
 export enum ActionTypes {
   ADD_NEW_ITEM = 'ADD_NEW_ITEM',
+  REMOVE_ITEM = 'REMOVE_ITEM',
   SUM_ITEM_QUANTITY = 'SUM_ITEM_QUANTITY',
   DEC_ITEM_QUANTITY = 'DEC_ITEM_QUANTITY',
 }
@@ -24,6 +25,13 @@ export function sumItemQuantityAction(itemName: string, quantity: number = 1) {
 export function decItemQuantityAction(itemName: string) {
   return {
     type: ActionTypes.DEC_ITEM_QUANTITY,
+    payload: { itemName },
+  }
+}
+
+export function removeItemAction(itemName: string) {
+  return {
+    type: ActionTypes.REMOVE_ITEM,
     payload: { itemName },
   }
 }
