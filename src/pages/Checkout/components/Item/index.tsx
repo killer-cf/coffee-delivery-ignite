@@ -7,12 +7,24 @@ import {
   PriceItemQuant,
 } from './styles'
 import { Item } from '../../../../reducers/cart/reducer'
+import { useContext } from 'react'
+import { CartContext } from '../../../../contexts/CartContext'
 
 interface ItemProps {
   itemData: Item
 }
 
 export function CartItem({ itemData }: ItemProps) {
+  const { decItemQuantity, sumItemQuantity } = useContext(CartContext)
+
+  function handleDecItemQuantity() {
+    decItemQuantity(itemData.name)
+  }
+
+  function handleSumItemQuantity() {
+    sumItemQuantity(itemData.name)
+  }
+
   return (
     <ItemContainer>
       <ItemInfoAndActions>
@@ -21,11 +33,11 @@ export function CartItem({ itemData }: ItemProps) {
           <h2>{itemData.name}</h2>
           <CartActions>
             <div>
-              <button type="button">
+              <button onClick={handleDecItemQuantity} type="button">
                 <span>-</span>
               </button>
               <p>{itemData.quantity}</p>
-              <button type="button">
+              <button onClick={handleSumItemQuantity} type="button">
                 <span>+</span>
               </button>
             </div>

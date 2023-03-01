@@ -1,8 +1,13 @@
 import { createContext, ReactNode, useReducer } from 'react'
-import { addNewItemAction } from '../reducers/cart/actions'
+import {
+  addNewItemAction,
+  decItemQuantityAction,
+  sumItemQuantityAction,
+} from '../reducers/cart/actions'
 import { cartReducer, Item } from '../reducers/cart/reducer'
 
 interface CreateItemData {
+  id?: string
   name: string
   quantity: number
   src: string
@@ -12,6 +17,8 @@ interface CreateItemData {
 interface CartContextType {
   itens: Item[]
   createNewItem: (data: CreateItemData) => void
+  sumItemQuantity: (itemName: string) => void
+  decItemQuantity: (itemName: string) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -28,21 +35,36 @@ export function CartContextProvider({ children }: CartContextProps) {
   const { itens } = cartState
 
   function createNewItem(data: CreateItemData) {
-    const id = String(new Date().getTime())
+    const duplicate = itens.filter((item) => item.name === data.name)
 
-    const newItem: Item = {
-      id,
-      name: data.name,
-      quantity: data.quantity,
-      src: data.src,
-      value: data.value,
+    if (duplicate.length === 0) {
+      const id = String(new Date().getTime())
+      const newItem: Item = {
+        id,
+        name: data.name,
+        quantity: data.quantity,
+        src: data.src,
+        value: data.value,
+      }
+
+      dispatch(addNewItemAction(newItem))
+    } else {
+      dispatch(sumItemQuantityAction(data.name, data.quantity))
     }
+  }
 
-    dispatch(addNewItemAction(newItem))
+  function sumItemQuantity(itemName: string) {
+    dispatch(sumItemQuantityAction(itemName))
+  }
+
+  function decItemQuantity(itemName: string) {
+    dispatch(decItemQuantityAction(itemName))
   }
 
   return (
-    <CartContext.Provider value={{ itens, createNewItem }}>
+    <CartContext.Provider
+      value={{ itens, createNewItem, sumItemQuantity, decItemQuantity }}
+    >
       {children}
     </CartContext.Provider>
   )
