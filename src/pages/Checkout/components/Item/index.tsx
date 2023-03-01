@@ -30,6 +30,9 @@ export function CartItem({ itemData }: ItemProps) {
     removeItem(itemData.name)
   }
 
+  const itemTotal = itemData.value * parseFloat(itemData.quantity.toFixed(2))
+  const itemTotalFormated = itemTotal.toFixed(2).toString().replace('.', ',')
+
   return (
     <ItemContainer>
       <ItemInfoAndActions>
@@ -54,7 +57,7 @@ export function CartItem({ itemData }: ItemProps) {
         </div>
       </ItemInfoAndActions>
       <PriceItemQuant>
-        <h5>R$ {itemData.value}</h5>
+        <h5>R$ {itemTotalFormated}</h5>
       </PriceItemQuant>
     </ItemContainer>
   )

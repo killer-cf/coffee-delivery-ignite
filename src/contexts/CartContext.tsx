@@ -12,7 +12,7 @@ interface CreateItemData {
   name: string
   quantity: number
   src: string
-  value: string
+  value: number
 }
 
 interface CartContextType {

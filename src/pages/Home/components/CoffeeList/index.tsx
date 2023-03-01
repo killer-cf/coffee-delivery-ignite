@@ -6,7 +6,7 @@ export interface Coffee {
   name: string
   desc: string
   src: string
-  value: string
+  value: number
   stock: number
 }
 
@@ -17,7 +17,7 @@ export function CoffeeList() {
       name: 'Expresso Tradicional',
       desc: 'O tradicional café feito com água quente e grãos moídos',
       src: 'src/assets/express.svg',
-      value: '8,90',
+      value: 8.9,
       stock: 10,
     },
   ]

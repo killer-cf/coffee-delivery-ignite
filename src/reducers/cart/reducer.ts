@@ -7,7 +7,7 @@ export interface Item {
   name: string
   src: string
   quantity: number
-  value: string
+  value: number
 }
 
 interface CartState {
