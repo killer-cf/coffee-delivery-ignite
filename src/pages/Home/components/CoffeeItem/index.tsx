@@ -21,6 +21,8 @@ export function CoffeeItem({ coffeData }: CoffeeItemProps) {
   const [itemQuantity, setItemQuantity] = useState(1)
   const { src, desc, name, value } = coffeData
 
+  const isQuantityGreaterThanOne = itemQuantity > 1
+
   function handleAddItemToCart() {
     const item = {
       name,
@@ -29,8 +31,10 @@ export function CoffeeItem({ coffeData }: CoffeeItemProps) {
       quantity: itemQuantity,
     }
 
-    createNewItem(item)
+    isQuantityGreaterThanOne && createNewItem(item)
   }
+
+  const valueFormated = value.toFixed(2).toString().replace('.', ',')
 
   return (
     <CoffeeItemContainer>
@@ -47,12 +51,13 @@ export function CoffeeItem({ coffeData }: CoffeeItemProps) {
       <Footer>
         <Price>
           <p>
-            R$<span>{value}</span>
+            R$<span>{valueFormated}</span>
           </p>
         </Price>
         <CartActions>
           <div>
             <button
+              disabled={!isQuantityGreaterThanOne}
               onClick={() => setItemQuantity(itemQuantity - 1)}
               type="button"
             >

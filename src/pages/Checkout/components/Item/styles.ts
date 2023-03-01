@@ -31,6 +31,8 @@ export const PriceItemQuant = styled.div`
   min-width: 3.4375rem;
   margin-top: 0.5rem;
   h5 {
+    width: 4rem;
+    text-align: right;
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.3;
@@ -52,6 +54,11 @@ export const CartActions = styled.div`
     height: 2.375rem;
     border-radius: 6px;
 
+    p {
+      width: 1.25rem;
+      text-align: center;
+    }
+
     button {
       flex: 1;
       border: 0;
@@ -62,6 +69,9 @@ export const CartActions = styled.div`
         span {
           font-weight: 600;
         }
+      }
+      :disabled {
+        opacity: 0.5;
       }
     }
 

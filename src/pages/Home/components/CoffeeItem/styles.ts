@@ -100,10 +100,25 @@ export const CartActions = styled.div`
     height: 2.375rem;
     border-radius: 6px;
 
+    p {
+      width: 1.25rem;
+      text-align: center;
+    }
+
     button {
+      cursor: pointer;
       flex: 1;
       border: 0;
       background: ${(props) => props.theme['base-button']};
+
+      :hover {
+        span {
+          font-weight: 600;
+        }
+      }
+      :disabled {
+        opacity: 0.5;
+      }
     }
 
     span {
@@ -124,8 +139,13 @@ export const ButtonAddToCart = styled.button`
   height: 2.375rem;
   background: ${(props) => props.theme['purple-dark']};
   border-radius: 6px;
+  cursor: pointer;
 
   svg {
     color: ${(props) => props.theme.white};
+  }
+
+  :hover {
+    background: ${(props) => props.theme.purple};
   }
 `
