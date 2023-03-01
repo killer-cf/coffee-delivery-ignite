@@ -25,6 +25,10 @@ export const ItemInfoAndActions = styled.div`
     line-height: 1.3;
     margin-bottom: 0.5rem;
   }
+
+  img {
+    width: 4rem;
+  }
 `
 
 export const PriceItemQuant = styled.div`
