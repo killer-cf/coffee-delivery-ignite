@@ -18,11 +18,11 @@ export function CartItem({ itemData }: ItemProps) {
   const { decItemQuantity, sumItemQuantity, removeItem } =
     useContext(CartContext)
 
-  const isQuantityGreaterThanOne = itemData.quantity > 1
-
   function handleDecItemQuantity() {
-    if (isQuantityGreaterThanOne) {
+    if (itemData.quantity > 1) {
       decItemQuantity(itemData.name)
+    } else {
+      removeItem(itemData.name)
     }
   }
 
@@ -45,11 +45,7 @@ export function CartItem({ itemData }: ItemProps) {
           <h2>{itemData.name}</h2>
           <CartActions>
             <div>
-              <button
-                disabled={!isQuantityGreaterThanOne}
-                onClick={handleDecItemQuantity}
-                type="button"
-              >
+              <button onClick={handleDecItemQuantity} type="button">
                 <span>-</span>
               </button>
               <p>{itemData.quantity}</p>
