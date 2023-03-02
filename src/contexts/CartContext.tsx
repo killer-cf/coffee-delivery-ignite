@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer } from 'react'
+import { createContext, ReactNode, useEffect, useReducer } from 'react'
 import {
   addNewItemAction,
   decItemQuantityAction,
@@ -30,11 +30,31 @@ interface CartContextProps {
 }
 
 export function CartContextProvider({ children }: CartContextProps) {
-  const [cartState, dispatch] = useReducer(cartReducer, {
-    itens: [],
-  })
+  const [cartState, dispatch] = useReducer(
+    cartReducer,
+    {
+      itens: [],
+    },
+    (initialState) => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:cartState-1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+
+      return initialState
+    },
+  )
 
   const { itens } = cartState
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cartState)
+
+    localStorage.setItem('@coffee-delivery:cartState-1.0.0', stateJSON)
+  }, [cartState])
 
   function createNewItem(data: CreateItemData) {
     const duplicate = itens.filter((item) => item.name === data.name)
