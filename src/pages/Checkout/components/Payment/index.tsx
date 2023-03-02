@@ -22,7 +22,7 @@ export function Payment() {
             type="radio"
             value="credit-card"
             id="credit_card"
-            {...register('payment-option')}
+            {...register('paymentOption')}
           />
           <button type="button">
             <label htmlFor="credit_card">
@@ -36,7 +36,7 @@ export function Payment() {
             type="radio"
             value="debit-card"
             id="debit_card"
-            {...register('payment-option')}
+            {...register('paymentOption')}
           />
           <button type="button">
             <label htmlFor="debit_card">
@@ -50,7 +50,7 @@ export function Payment() {
             type="radio"
             value="money"
             id="money_"
-            {...register('payment-option')}
+            {...register('paymentOption')}
           />
           <button type="button">
             <label htmlFor="money_">

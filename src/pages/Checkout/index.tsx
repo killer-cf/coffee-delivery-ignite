@@ -16,7 +16,7 @@ interface CheckoutFormType {
   bairro: string
   cidade: string
   uf: string
-  'payment-option': string
+  paymentOption: string
 }
 
 export function Checkout({ history }: any) {
@@ -33,7 +33,7 @@ export function Checkout({ history }: any) {
       bairro: '',
       cidade: '',
       uf: '',
-      'payment-option': '',
+      paymentOption: '',
     },
   })
 

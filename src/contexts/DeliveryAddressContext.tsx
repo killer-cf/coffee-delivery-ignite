@@ -30,7 +30,7 @@ export function DeliveryAddressProvider({
       bairro: '',
       cidade: '',
       uf: '',
-      'payment-option': '',
+      paymentOption: '',
     },
   })
 

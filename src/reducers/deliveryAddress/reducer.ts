@@ -8,7 +8,7 @@ export interface DeliveryAddress {
   bairro: string
   cidade: string
   uf: string
-  'payment-option': string
+  paymentOption: string
 }
 
 interface DeliveyAddressState {
