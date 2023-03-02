@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { CartContext } from '../../contexts/CartContext'
+import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
 import { Address } from './components/Address'
 import { Cart } from './components/Cart'
 import { Payment } from './components/Payment'
@@ -21,6 +22,7 @@ interface CheckoutFormType {
 export function Checkout({ history }: any) {
   const { itens } = useContext(CartContext)
   const navigate = useNavigate()
+  const { createDeliveyAddress } = useContext(DeliveryAddressContext)
 
   const checkoutForm = useForm<CheckoutFormType>({
     defaultValues: {
@@ -37,7 +39,10 @@ export function Checkout({ history }: any) {
 
   const { handleSubmit } = checkoutForm
 
-  function handleCreateAddress(data: CheckoutFormType) {}
+  function handleCreateAddress(data: CheckoutFormType) {
+    createDeliveyAddress(data)
+    navigate('/order')
+  }
 
   if (itens.length > 0) {
     return (

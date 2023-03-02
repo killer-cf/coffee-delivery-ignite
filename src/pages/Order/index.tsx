@@ -1,10 +1,7 @@
-import { useLocation } from 'react-router-dom'
+import { useContext } from 'react'
+import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
 
 export function Order() {
-  const {
-    state: { data },
-  } = useLocation()
-
-  console.log(data)
+  const { deliveryAddress } = useContext(DeliveryAddressContext)
   return <h1>ORDER</h1>
 }
