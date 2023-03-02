@@ -1,5 +1,7 @@
 import { useContext } from 'react'
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
+import confirmedImage from '../../assets/confirmed-image.svg'
 import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
 import {
   IconCircle,
@@ -8,13 +10,20 @@ import {
   OrderContent,
   OrderSuccessContainer,
 } from './styles'
-import confirmedImage from '../../assets/confirmed-image.svg'
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
 export function Order() {
   const { deliveryAddress } = useContext(DeliveryAddressContext)
 
-  const { cidade, paymentOption, numero, uf, rua, bairro } = deliveryAddress
+  let { cidade, paymentOption, numero, uf, rua, bairro } = deliveryAddress
+
+  if (paymentOption === 'credit-card') {
+    paymentOption = 'Cartão de Crédito'
+  } else if (paymentOption === 'debit-card') {
+    paymentOption = 'Cartão de Débito'
+  } else {
+    paymentOption = 'Dinheiro'
+  }
+
   return (
     <OrderSuccessContainer>
       <div>
@@ -32,7 +41,7 @@ export function Order() {
                 <p>
                   Entrega em <strong>{`${rua}, ${numero}`}</strong>
                 </p>
-                <p>{`${bairro} - ${cidade}, ${uf.toUpperCase()}`}</p>
+                <p>{`${bairro} - ${cidade}, ${uf}`}</p>
               </div>
             </InfoBox>
 
