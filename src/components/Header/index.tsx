@@ -2,7 +2,12 @@ import { ShoppingCart, MapPin } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 
-import { HeaderContainer, LocationContainer, NavContainer } from './styles'
+import {
+  HeaderContainer,
+  InvisibleDid,
+  LocationContainer,
+  NavContainer,
+} from './styles'
 import Logo from '../../assets/logo.svg'
 import { CartContext } from '../../contexts/CartContext'
 import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
@@ -27,11 +32,15 @@ export function Header() {
           <div className="boll">
             <p>{itensTotal}</p>
           </div>
-        )}{' '}
-        <LocationContainer>
-          <MapPin weight="fill" size={22} />
-          {!!cidade && !!uf && <p>{`${cidade}, ${uf}`}</p>}
-        </LocationContainer>
+        )}
+        {!!cidade && !!uf ? (
+          <LocationContainer>
+            <MapPin weight="fill" size={22} />
+            <p>{`${cidade}, ${uf}`}</p>
+          </LocationContainer>
+        ) : (
+          <InvisibleDid />
+        )}
         <NavLink to="/checkout">
           <ShoppingCart weight="fill" size={22} />
         </NavLink>

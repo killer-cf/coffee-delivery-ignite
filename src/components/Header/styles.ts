@@ -63,3 +63,8 @@ export const LocationContainer = styled.div`
     color: ${(props) => props.theme.purple};
   }
 `
+
+export const InvisibleDid = styled.div`
+  width: 8.9375rem;
+  height: 2.375rem;
+`
