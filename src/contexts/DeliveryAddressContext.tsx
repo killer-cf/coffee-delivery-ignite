@@ -1,10 +1,17 @@
-import { createContext, ReactNode, useEffect, useReducer } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useReducer,
+} from 'react'
 import { createDeliveryAddressAction } from '../reducers/deliveryAddress/actions'
 import {
   DeliveryAddress,
   deliveryAddressReducer,
 } from '../reducers/deliveryAddress/reducer'
 import { capitalize } from '../utils/functions'
+import { CartContext } from './CartContext'
 
 interface DeliveryAddressContextType {
   deliveryAddress: DeliveryAddress
@@ -49,6 +56,7 @@ export function DeliveryAddressProvider({
     },
   )
 
+  const { clearCart } = useContext(CartContext)
   const { deliveryAddress } = deliveryAddressState
 
   useEffect(() => {
@@ -70,6 +78,7 @@ export function DeliveryAddressProvider({
     }
 
     dispatch(createDeliveryAddressAction(newDataFormated))
+    clearCart()
   }
 
   return (

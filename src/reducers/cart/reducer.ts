@@ -51,6 +51,12 @@ export function cartReducer(state: CartState, action: any) {
       })
     }
 
+    case ActionTypes.CLEAR_ITENS: {
+      return produce(state, (draft) => {
+        draft.itens = []
+      })
+    }
+
     default:
       return state
   }

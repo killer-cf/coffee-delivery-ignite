@@ -4,6 +4,7 @@ import { Item } from './reducer'
 export enum ActionTypes {
   ADD_NEW_ITEM = 'ADD_NEW_ITEM',
   REMOVE_ITEM = 'REMOVE_ITEM',
+  CLEAR_ITENS = 'CLEAR_ITENS',
   SUM_ITEM_QUANTITY = 'SUM_ITEM_QUANTITY',
   DEC_ITEM_QUANTITY = 'DEC_ITEM_QUANTITY',
 }
@@ -33,5 +34,11 @@ export function removeItemAction(itemName: string) {
   return {
     type: ActionTypes.REMOVE_ITEM,
     payload: { itemName },
+  }
+}
+
+export function clearItensAction() {
+  return {
+    type: ActionTypes.CLEAR_ITENS,
   }
 }
