@@ -21,6 +21,7 @@ export const FlagsContainer = styled.div`
   display: flex;
   padding-top: 0.75rem;
   padding-bottom: 1rem;
+  gap: 0.25rem;
 
   div {
     background: ${(props) => props.theme['yellow-light']};

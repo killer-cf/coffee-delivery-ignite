@@ -19,7 +19,7 @@ interface CoffeeItemProps {
 export function CoffeeItem({ coffeData }: CoffeeItemProps) {
   const { createNewItem } = useContext(CartContext)
   const [itemQuantity, setItemQuantity] = useState(1)
-  const { src, desc, name, value } = coffeData
+  const { src, desc, name, value, flags } = coffeData
 
   function handleAddItemToCart() {
     const item = {
@@ -38,9 +38,11 @@ export function CoffeeItem({ coffeData }: CoffeeItemProps) {
     <CoffeeItemContainer>
       <img src={src} alt="" />
       <FlagsContainer>
-        <div>
-          <h3>TRADICIONAL</h3>
-        </div>
+        {flags.map((flag: string) => (
+          <div key={flag}>
+            <h3>{flag}</h3>
+          </div>
+        ))}
       </FlagsContainer>
       <CoffeeInfo>
         <h2>{name}</h2>

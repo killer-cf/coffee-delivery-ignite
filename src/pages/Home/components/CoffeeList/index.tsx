@@ -7,6 +7,7 @@ export interface Coffee {
   name: string
   desc: string
   src: string
+  flags: string[]
   value: number
   stock: number
 }
