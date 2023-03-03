@@ -7,13 +7,17 @@ import {
   CityInput,
   ComplementInput,
   DistrictInput,
+  ErrorContainer,
   NumbertInput,
   StreetInput,
   UfInput,
 } from './styles'
 
 export function Address() {
-  const { register } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <AddressCard>
@@ -35,6 +39,7 @@ export function Address() {
           placeholder="Número"
           {...register('numero')}
         />
+
         <div className="optional-input">
           <ComplementInput
             type="text"
@@ -54,6 +59,14 @@ export function Address() {
         <CityInput type="text" placeholder="Cidade" {...register('cidade')} />
         <UfInput type="text" placeholder="UF" {...register('uf')} />
       </div>
+      <ErrorContainer>
+        {errors.cep?.message && <p>{errors.cep?.message?.toString()}</p>}
+        {errors.rua?.message && <p>{errors.rua?.message?.toString()}</p>}
+        {errors.numero?.message && <p>{errors.numero?.message?.toString()}</p>}
+        {errors.bairro?.message && <p>{errors.bairro?.message?.toString()}</p>}
+        {errors.cidade?.message && <p>{errors.cidade?.message?.toString()}</p>}
+        {errors.uf?.message && <p>{errors.uf?.message?.toString()}</p>}
+      </ErrorContainer>
     </AddressCard>
   )
 }

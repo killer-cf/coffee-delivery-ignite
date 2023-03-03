@@ -1,6 +1,9 @@
 import { useContext } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { NavLink, useNavigate } from 'react-router-dom'
+import * as zod from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import { CartContext } from '../../contexts/CartContext'
 import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
 import { Address } from './components/Address'
@@ -8,23 +11,33 @@ import { Cart } from './components/Cart'
 import { Payment } from './components/Payment'
 import { CheckoutForm, EmptyCart } from './styles'
 
-interface CheckoutFormType {
-  cep: string
-  rua: string
-  numero: string
-  complemento: string
-  bairro: string
-  cidade: string
-  uf: string
-  paymentOption: string
-}
+const checkoutFormValidationSchema = zod
+  .object({
+    cep: zod
+      .string()
+      .regex(/^[0-9]{5}-[0-9]{3}$/, 'CEP deve estar no formato 00000-000'),
+    rua: zod.string().min(1, 'Rua não pode ficar em branco'),
+    numero: zod.string().min(1, 'Número não pode ficar em branco').max(7),
+    complemento: zod.string(),
+    bairro: zod.string().min(1, 'Bairro não pode ficar em branco'),
+    cidade: zod.string().min(1, 'Cidade não pode ficar em branco'),
+    uf: zod
+      .string()
+      .min(1, 'UF não pode ficar em branco')
+      .length(2, 'UF invalido'),
+    paymentOption: zod.string().min(1, 'Selecione uma forma de pagamento'),
+  })
+  .partial({ complemento: true })
 
-export function Checkout({ history }: any) {
+type CheckoutFormType = zod.infer<typeof checkoutFormValidationSchema>
+
+export function Checkout() {
   const { itens } = useContext(CartContext)
   const navigate = useNavigate()
   const { createDeliveyAddress } = useContext(DeliveryAddressContext)
 
   const checkoutForm = useForm<CheckoutFormType>({
+    resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
       cep: '',
       rua: '',

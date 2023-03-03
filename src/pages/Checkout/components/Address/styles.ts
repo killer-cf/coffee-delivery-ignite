@@ -17,7 +17,6 @@ export const AddressCard = styled.div`
   .mobal {
     display: flex;
     width: 100%;
-    flex-wrap: wrap;
 
     .optional-input {
       display: flex;
@@ -126,13 +125,6 @@ export const ComplementInput = styled(BaseInput)`
   margin-bottom: 1rem;
   flex: 1;
 
-  &::after {
-    content: 'Opcional';
-    width: 20px;
-    height: 20px;
-    background-color: red;
-  }
-
   @media screen and (max-width: 768px) {
     width: 70%;
   }
@@ -167,4 +159,11 @@ export const UfInput = styled(BaseInput)`
   max-width: 3.75rem;
   margin-bottom: 1rem;
   flex: 1;
+`
+export const ErrorContainer = styled.div`
+  p {
+    color: tomato;
+    line-height: 1.6;
+    font-size: 0.9125rem;
+  }
 `

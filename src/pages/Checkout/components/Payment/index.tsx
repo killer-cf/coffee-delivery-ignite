@@ -1,9 +1,17 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
-import { PaymentCard, PaymentCardTitle, PaymentOptions } from './styles'
+import {
+  ErrorContainer,
+  PaymentCard,
+  PaymentCardTitle,
+  PaymentOptions,
+} from './styles'
 
 export function Payment() {
-  const { register } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <PaymentCard>
@@ -16,6 +24,7 @@ export function Payment() {
           </p>
         </div>
       </PaymentCardTitle>
+
       <PaymentOptions>
         <div>
           <input
@@ -60,6 +69,11 @@ export function Payment() {
           </button>
         </div>
       </PaymentOptions>
+      <ErrorContainer>
+        {errors.paymentOption?.message && (
+          <p>{errors.paymentOption?.message?.toString()}</p>
+        )}
+      </ErrorContainer>
     </PaymentCard>
   )
 }

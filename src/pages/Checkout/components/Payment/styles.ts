@@ -104,3 +104,12 @@ export const PaymentOptions = styled.div`
     border: 1px solid ${(props) => props.theme.purple};
   }
 `
+
+export const ErrorContainer = styled.div`
+  p {
+    margin-top: 1rem;
+    color: tomato;
+    line-height: 1.6;
+    font-size: 0.9125rem;
+  }
+`
