@@ -8,7 +8,6 @@ import {
   LocationContainer,
   NavContainer,
 } from './styles'
-import Logo from '../../assets/logo.svg'
 import { CartContext } from '../../contexts/CartContext'
 import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
 
@@ -25,7 +24,7 @@ export function Header() {
   return (
     <HeaderContainer>
       <div>
-        <img src={Logo} alt="logo" />
+        <img src="/logo.svg" alt="logo" />
       </div>
       <NavContainer>
         {itensTotal > 0 && (

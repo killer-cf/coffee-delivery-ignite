@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
-import confirmedImage from '../../assets/confirmed-image.svg'
 import { DeliveryAddressContext } from '../../contexts/DeliveryAddressContext'
 import {
   IconCircle,
@@ -66,7 +65,7 @@ export function Order() {
             </InfoBox>
           </InfoBoxesContainer>
         </div>
-        <img src={confirmedImage} alt="homem correndo de moto" />
+        <img src="/confirmed-image.svg" alt="homem correndo de moto" />
       </OrderContent>
     </OrderSuccessContainer>
   )

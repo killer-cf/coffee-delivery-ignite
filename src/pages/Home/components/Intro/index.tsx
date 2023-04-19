@@ -7,7 +7,6 @@ import {
   IntroInfoContainer,
   TitleContainer,
 } from './styles'
-import CupOfCoffee from '../../../../assets/cup-of-coffee.svg'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 export function Intro() {
@@ -49,7 +48,7 @@ export function Intro() {
         </BenefitsContainer>
       </IntroInfoContainer>
       <IntroImgContainer>
-        <img src={CupOfCoffee} alt="Copo de café" />
+        <img src="/cup-of-coffee.svg" alt="Copo de café" />
       </IntroImgContainer>
     </IntroContainer>
   )
